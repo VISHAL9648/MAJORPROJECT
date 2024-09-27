@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const review = require("./review.js");
+const review = require("./review.js");
 
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
@@ -31,12 +31,15 @@ const listingSchema =new  Schema({
   geomerty:{
     type:{
     type:String,
+  
     enum:['Point'],
-    required:true
+    default:'Point',
+    // required:true
   },
   coordinates:{
     type:[Number],
-    requires:true
+    default:[0,0],
+    // requires:true
 }
   }
 });
@@ -45,7 +48,7 @@ listingSchema.post("findOneDelete", async(listing)=>{
  await  Review.deleteMany({_id:{$in: listing.reviews}})
 });
 
-// const Listing = mongoose.model("Listing", listingSchema);
-// module.exports=Listing;
+const Listing = mongoose.model("Listing", listingSchema);
+module.exports=Listing;
 
-module.exports = mongoose.model('Listing',listingSchema);
+// module.exports = mongoose.model('Listing',listingSchema);

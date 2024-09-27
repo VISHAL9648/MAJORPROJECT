@@ -16,7 +16,7 @@ module.exports.index =async (req, res) =>{
     res.render("./listings/new.ejs");
 };
 
-module.exports.showListng = async (req, res)=>{
+module.exports.showListing = async (req, res)=>{
     let {id} = req.params;
      const listing = await Listing.findById(id).populate({
       path:"reviews",
@@ -88,4 +88,8 @@ module.exports.destroyListing =async (req, res)=>{
       console.log(deletedListing);
       req.flash("success", "Listing Deleted!");
       res.redirect("/listings");
-}
+};
+
+// module.exports.createListing=async(req, res, next)=>{
+//   console.log("request body:", req.body);
+// }
