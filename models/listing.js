@@ -28,7 +28,7 @@ const listingSchema =new  Schema({
         type: Schema.Types.ObjectId,
         ref:"User",
     },
-  geomerty:{
+  geometry:{
     type:{
     type:String,
   
